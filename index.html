@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <title>Sistema Incendios!</title>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+        }
+
+        .myTitle {
+            color: aliceblue;
+            font-size: 200%;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin: 10px 0;
+        }
+
+        .rule {
+            height: 3px;
+            width: 100%;
+            background: white;
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body class="container-fluid">
+    <div class="myTitle">MONITOREO DE VARIABLES</div>
+    <hr class="rule">
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="col-12 col-lg-4">
+            2 of 2
+        </div>
+        <div class="col-12 col-lg-4">
+            3 of 3
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            1 of 3
+        </div>
+        <div class="col-12 col-lg-4">
+            2 of 3
+        </div>
+        <div class="col-12 col-lg-4">
+            3 of 3
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="node_modules/jquery/dist/jquery.slim.js"></script>
+    <script src="node_modules/popper.js/dist/popper.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+
+        var samples = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
+        
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: samples,
+                datasets: [{
+                    label: 'CO',
+                    backgroundColor: 'rgba(75, 192, 192, 1)',
+                    borderColor: 'rgb(80, 150, 91)',
+                    borderWidth: 4,
+                    data: [0, 10, 5, 2, 20, 30, 45, 77, 34, 34, 12, 3, 12] // will be filled from database
+                }],
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    fontColor: "#fff",
+                    fontSize: 16,
+                    fontFamily: 'Trebuchet MS',
+                    text: 'Monóxido de Carbono'
+                },
+                legend: {
+                    labels: {
+                        fontColor: "white",
+                        fontSize: 15
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            fontSize: 12,
+                            // stepSize: 1,
+                            // beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: "white",
+                            fontSize: 11,
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
